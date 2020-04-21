@@ -1,5 +1,5 @@
 # reactjs-pizza-delivery-app
-complete reactjs boilerplate with API call resolver and bootstrap enabled
+complete reactjs app with API call resolver and bootstrap enabled with redux 
 
 # Article Referance - Redux
 https://medium.com/@awaisshaikh94/making-api-calls-in-react-using-redux-thunk-b3f29ca04cf7
