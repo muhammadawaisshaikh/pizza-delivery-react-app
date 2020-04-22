@@ -1,5 +1,4 @@
 import NotFoundPage from './404-page/NotFoundPageComponent';
-import HomepageDemo from '../components/home-demo/HomeDemoComponent';
 import Login from '../components/auth/LoginComponent';
 import Homepage from '../components/homepage/Homepage';
 import Menu from '../components/menu/Menu';

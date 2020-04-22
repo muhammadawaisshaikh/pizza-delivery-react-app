@@ -3,11 +3,11 @@ import ApiResolver from './ApiResolver';
 
 class CoreHttpHandler {
     constructor() {
-        this.apiEndpoint = 'https://reqres.in';
+        this.apiEndpoint = 'https://pizza-delivery-rails-api.herokuapp.com';
     
         this.config = {
             headers: {
-                'content-type': 'text/plain',
+                'content-type': 'application/json',
             }
         };
     }
