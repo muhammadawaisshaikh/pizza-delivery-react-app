@@ -1,50 +1,4 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-/*------------------------------------------------------------------
-[Table of contents]
-
-1. Body
-2. Helper classes
-3. Buttons
-4. Banner
-5. Sections general styles
-6. Breadcrumbs
-7. Tabs
-8. Forms
-9. Footer
-10. Page loader styles
-11. Header
-12. Revolution slider styles
-13. Menu item & list section
-14. Reservation section styles
-15. Banner styles
-16. Oblique page styles
-17. Blog item styles
-18. Widgets styles
-19. Shop page styles
-20. Main navigation styles
-21. Responsive styles
--------------------------------------------------------------------*/
-/***********************************************
-Mixin
-***********************************************/
-/*How to use  
-	.element{
-		@include border(top, #000, 50px);   
-	}
-*/
-body {
   font-family: "Open Sans", Helvetica, Arial, sans-serif;
   font-size: 14px;
   background-color: #efefef;
@@ -1647,8 +1601,8 @@ form textarea.form-control {
 /*========== Menu Item Start ==========*/
 .menu-right-img {
   /* background: url(../images/menu-bg-img.jpg) no-repeat; */
-  background-size: cover;
-  background-position: left center;
+  background-size: cover !important;
+  background-position: left center !important;
   position: absolute;
   top: 0;
   right: 0px;
@@ -5800,6 +5754,23 @@ ul li.has-subnav .accordion-btn {
   /* Header */
 }
 
-/*---------- Large Desktop , Large Screen End ----------*/
+.cart-btn {
+  background: #cc9933;
+  padding: 5px 10px;
+  position: relative;
+}
 
-/*# sourceMappingURL=source-maps/template.css.map */
+.cart-btn img {
+  width: 30px;
+}
+
+.cart-btn span {
+  padding: 1px 6px;
+  background: white;
+  border: 2px solid #cc9933;
+  font-size: 12px;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  right: 7px;
+}
