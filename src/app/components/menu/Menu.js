@@ -1,29 +1,18 @@
 import React from 'react';
-import './homepage.css';
-import Banner from '../../assets/img/menu-list-banner.jpg';
-import { connect } from "react-redux";
+import './menu.css';
 
 import CoreHttpService from '../../core/config/CoreHttpHandler';
 
-class Home extends React.Component {
+class Menu extends React.Component {
 
     constructor(props) {
       super(props);
     }
 
     render() {
+        
         return (
             <div>
-                <div class="banner">
-                    <img class="OF-cover img-responsive" src={Banner} alt="" />
-                    <div class="banner-overlay"></div>
-                    <div class="banner-title">
-                        <h5>restaurant</h5>
-                        <h1>Pizza House</h1>
-                        <p>Juicy | Delicious | Tasty</p>
-                    </div>
-                </div>
-
                 <div className="container">
                     <div class="content menu-list menu-list-full">
                         <div class="row gutter-md">
@@ -162,4 +151,4 @@ class Home extends React.Component {
     }
 }
 
-export default Home;
+export default Menu;

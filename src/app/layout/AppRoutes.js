@@ -2,6 +2,9 @@ import NotFoundPage from './404-page/NotFoundPageComponent';
 import HomepageDemo from '../components/home-demo/HomeDemoComponent';
 import Login from '../components/auth/LoginComponent';
 import Homepage from '../components/homepage/Homepage';
+import Menu from '../components/menu/Menu';
+import Checkout from '../components/booking/Checkout';
+import Cart from '../components/booking/Cart';
 
 const APP_ROUTES = {
     notFound: {
@@ -16,19 +19,33 @@ const APP_ROUTES = {
         component: Homepage,
         default: true,
     },
-    login: {
-        path: '/login',
-        name: 'Login',
-        protected: false,
-        icon: null,
-        component: Login
-    },
     homepage: {
         path: '/homepage',
         name: 'Homepage',
         protected: false,
         icon: null,
         component: Homepage
+    },
+    menu: {
+        path: '/menu',
+        name: 'Menu',
+        protected: false,
+        icon: null,
+        component: Menu
+    },
+    checkout: {
+        path: '/checkout',
+        name: 'Checkout',
+        protected: false,
+        icon: null,
+        component: Checkout
+    },
+    cart: {
+        path: '/cart',
+        name: 'Cart',
+        protected: false,
+        icon: null,
+        component: Cart
     } 
     
 };
