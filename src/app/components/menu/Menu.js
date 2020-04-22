@@ -1,147 +1,91 @@
 import React from 'react';
 import './menu.css';
 
+import { connect } from "react-redux";
 import CoreHttpService from '../../core/config/CoreHttpHandler';
 
 class Menu extends React.Component {
 
     constructor(props) {
       super(props);
+
+      this.state = {
+          products: []
+      }
+    }
+
+    componentDidMount() {
+        this.getMenu();
+    }
+
+    getMenu() {
+        console.log("this.props.Products : ", this.props.Products);
+
+        if (this.props.Products) {
+            this.state.products = this.props.Products.data.products;
+        }
     }
 
     render() {
-        
         return (
             <div>
-                <div className="container">
-                    <div class="content menu-list menu-list-full">
-                        <div class="row gutter-md">
-                            <div class="col-sm-12 col-md-12">
-                                <div class="menu-list-title">
+                <div classNameName="container">
+                    <div className="content menu-list menu-list-full">
+                        <div className="row gutter-md">
+                            <div className="col-sm-12 col-md-12">
+                                <div className="menu-list-title">
                                     <h2>Tasty</h2>
                                     <h3>Menu</h3>
                                 </div>
                             </div>
-                            <div class="col-sm-12 col-md-6">
+                            <div className="col-sm-12 col-md-6">
                                 <ul>
-                                    <li>
-                                        <div class="price-item-main">
-                                            <h4 class="list-item-title">crab cakes <small>(250 g)</small></h4>
-                                            <div class="price-list-dotted-separator"></div>
-                                            <div class="list-item-price">$18.50</div>
-                                        </div>
-                                        <div class="price-item-desc">
-                                            <p>Onions / Fresh flat-leaf parsley / Mashed potatoes / Pepper / Eggs / Tartare sauce</p>
-                                        </div>
-                                        <a className="btn-default py-2 px-3">Add To Cart</a>
-                                    </li>
-                                    <li>
-                                        <div class="price-item-main">
-                                            <h4 class="list-item-title">Whitebait & dill mayo <small>(250 g)</small></h4>
-                                            <div class="price-list-dotted-separator"></div>
-                                            <div class="list-item-price">$12.00</div>
-                                        </div>
-                                        <div class="price-item-desc">
-                                            <p>Fish / Lemon / Mayo / Fennel seeds</p>
-                                        </div>
-                                        <a className="btn-default py-2 px-3">Add To Cart</a>
-                                    </li>
-                                    <li>
-                                        <div class="price-item-main">
-                                            <h4 class="list-item-title">Watermelon & feta salad <small>(250 g)</small></h4>
-                                            <div class="price-list-dotted-separator"></div>
-                                            <div class="list-item-price">$11.50</div>
-                                        </div>
-                                        <div class="price-item-desc">
-                                            <p>Watermelon / Red onion / Feta cheese / Fresh mint / Olive oil</p>
-                                        </div>
-                                        <a className="btn-default py-2 px-3">Add To Cart</a>
-                                    </li>
-                                    <li>
-                                        <div class="price-item-main">
-                                            <h4 class="list-item-title">Halloumi with griddled vegetables <small>(250 g)</small></h4>
-                                            <div class="price-list-dotted-separator"></div>
-                                            <div class="list-item-price">$9.00</div>
-                                        </div>
-                                        <div class="price-item-desc">
-                                            <p>Beans / Halloumi cheese / Asparagus / Courgettes / Cherry tomatoes</p>
-                                        </div>
-                                        <a className="btn-default py-2 px-3">Add To Cart</a>
-                                    </li>
-                                    <li>
-                                        <div class="price-item-main">
-                                            <h4 class="list-item-title">Asparagus & halloumi salad <small>(250 g)</small></h4>
-                                            <div class="price-list-dotted-separator"></div>
-                                            <div class="list-item-price">$4.50</div>
-                                        </div>
-                                        <div class="price-item-desc">
-                                            <p>Smoked streaky bacon / Frozen peas / Fresh chervil</p>
-                                        </div>
-                                        <a className="btn-default py-2 px-3">Add To Cart</a>
-                                    </li>
+                                    {
+                                        this.state.products.map((item, i) => {
+                                            if (i < 5) {
+                                                return (
+                                                    <li>
+                                                        <div className="price-item-main">
+                                                            <h4 className="list-item-title">{item.name} <small>(250 g)</small></h4>
+                                                            <div className="price-list-dotted-separator"></div>
+                                                            <div className="list-item-price">$4.50</div>
+                                                        </div>
+                                                        <div className="price-item-desc">
+                                                            <p>{item.description}</p>
+                                                        </div>
+                                                        <a className="btn-default py-2 px-3">Add To Cart</a>
+                                                    </li>
+                                                )
+                                            }
+                                        })
+                                    }
                                 </ul>
                             </div>
-                            <div class="col-sm-12 col-md-6">
+                            <div className="col-sm-12 col-md-6">
                                 <ul>
-                                    <li>
-                                        <div class="price-item-main">
-                                            <h4 class="list-item-title">Chilled pea & chervil soup <small>(250 g)</small></h4>
-                                            <div class="price-list-dotted-separator"></div>
-                                            <div class="list-item-price">$18.50</div>
-                                        </div>
-                                        <div class="price-item-desc">
-                                            <p>Onions / Fresh flat-leaf parsley / Mashed potatoes / Pepper / Eggs / Tartare sauce</p>
-                                        </div>
-                                        <a className="btn-default py-2 px-3">Add To Cart</a>
-                                    </li>
-                                    <li>
-                                        <div class="price-item-main">
-                                            <h4 class="list-item-title">Aubergine dip <small>(250 g)</small></h4>
-                                            <div class="price-list-dotted-separator"></div>
-                                            <div class="list-item-price">$12.00</div>
-                                        </div>
-                                        <div class="price-item-desc">
-                                            <p>Fish / Lemon / Mayo / Fennel seeds</p>
-                                        </div>
-                                        <a className="btn-default py-2 px-3">Add To Cart</a>
-                                    </li>
-                                    <li>
-                                        <div class="price-item-main">
-                                            <h4 class="list-item-title">Simple sushi salad <small>(250 g)</small></h4>
-                                            <div class="price-list-dotted-separator"></div>
-                                            <div class="list-item-price">$11.50</div>
-                                        </div>
-                                        <div class="price-item-desc">
-                                            <p>Watermelon / Red onion / Feta cheese / Fresh mint / Olive oil</p>
-                                        </div>
-                                        <a className="btn-default py-2 px-3">Add To Cart</a>
-                                    </li>
-                                    <li>
-                                        <div class="price-item-main">
-                                            <h4 class="list-item-title">Beef & barley bun with horseradish <small>(250 g)</small></h4>
-                                            <div class="price-list-dotted-separator"></div>
-                                            <div class="list-item-price">$9.00</div>
-                                        </div>
-                                        <div class="price-item-desc">
-                                            <p>Beans / Halloumi cheese / Asparagus / Courgettes / Cherry tomatoes</p>
-                                        </div>
-                                        <a className="btn-default py-2 px-3">Add To Cart</a>
-                                    </li>
-                                    <li>
-                                        <div class="price-item-main">
-                                            <h4 class="list-item-title">Chicken wings, agrodolce style <small>(250 g)</small></h4>
-                                            <div class="price-list-dotted-separator"></div>
-                                            <div class="list-item-price">$4.50</div>
-                                        </div>
-                                        <div class="price-item-desc">
-                                            <p>Smoked streaky bacon / Frozen peas / Fresh chervil</p>
-                                        </div>
-                                        <a className="btn-default py-2 px-3">Add To Cart</a>
-                                    </li>
+                                {
+                                    this.state.products.map((item, i) => {
+                                        if (i>=5 && i <= 10) {
+                                            return (
+                                                <li>
+                                                    <div className="price-item-main">
+                                                        <h4 className="list-item-title">{item.name} <small>(250 g)</small></h4>
+                                                        <div className="price-list-dotted-separator"></div>
+                                                        <div className="list-item-price">$4.50</div>
+                                                    </div>
+                                                    <div className="price-item-desc">
+                                                        <p>{item.description}</p>
+                                                    </div>
+                                                    <a className="btn-default py-2 px-3">Add To Cart</a>
+                                                </li>
+                                            )
+                                        }
+                                    })
+                                }
                                 </ul>
                             </div>
-                            <div class="col-sm-12 col-md-12">
-                                <div class="height-of-menu-list"></div>
+                            <div className="col-sm-12 col-md-12">
+                                <div className="height-of-menu-list"></div>
                             </div>
                         </div>
                     </div>
@@ -151,4 +95,18 @@ class Menu extends React.Component {
     }
 }
 
-export default Menu;
+const mapStateToProps = state => ({
+    Products: state.task.Products
+});
+
+const mapDispacthToProps = dispatch => {
+    return {
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    null
+)(Menu);
+
+// export default Menu;

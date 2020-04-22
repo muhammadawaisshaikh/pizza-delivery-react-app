@@ -28,9 +28,6 @@ import Main from './app/components/main/MainComponent'
 
   componentDidMount() {
     this.props.GetProducts();
-    
-    // do stuff while splash screen is shown
-    // After having done stuff (such as async tasks) hide the splash screen
   }
   
   render() {

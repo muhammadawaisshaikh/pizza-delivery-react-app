@@ -19,7 +19,7 @@ export const GetProducts = () => {
 
             dispatch({
                 type: GET_PRODUCTS,
-                users: response
+                products: response
             });
     
         }, (error) => {
