@@ -20,3 +20,8 @@ redux > store > store.js
 
 - update App.js by mapDispacthToProps to call taskActions to perfrom API calls, as mentioned in code snippets/gist
 - update App index.js by adding reducer and connect with store, as mentioned in code snippets/gist
+
+# API Endpoints
+https://pizza-delivery-rails-api.herokuapp.com/v1/products
+https://pizza-delivery-rails-api.herokuapp.com/v1/types
+https://pizza-delivery-rails-api.herokuapp.com/v1/orders
