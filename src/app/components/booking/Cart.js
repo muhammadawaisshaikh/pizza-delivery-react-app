@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from "react-router-dom";
 import './booking.css';
+import noData from '../../assets/img/no-data.png';
 
 import CoreHttpService from '../../core/config/CoreHttpHandler';
 
@@ -161,8 +162,8 @@ class Cart extends React.Component {
                             </article>
                             :
                             <article>
-                                <header className="cart-header">
-                                    <h2>No items in cart</h2>
+                                <header className="cart-header" style={{textAlign: 'center', padding: '100px 0'}}>
+                                    <img src={noData} />
                                 </header>
                             </article>
                         }

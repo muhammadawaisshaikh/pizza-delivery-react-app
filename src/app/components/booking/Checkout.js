@@ -1,5 +1,6 @@
 import React from 'react';
 import './booking.css';
+import Tick from '../../assets/img/tick.png';
 
 import CoreHttpService from '../../core/config/CoreHttpHandler';
 
@@ -113,8 +114,9 @@ class Checkout extends React.Component {
                         </div>
                     </div>
                     :
-                    <header className="cart-header" style={{padding: '100px'}}>
-                        <h2>Order Successfull</h2>
+                    <header className="cart-header" style={{padding: '200px 100px', textAlign: 'center'}}>
+                        <img src={Tick} width="100" />
+                        <h2><b>Order Successfull</b></h2>
                     </header>
                 }
             </div>
