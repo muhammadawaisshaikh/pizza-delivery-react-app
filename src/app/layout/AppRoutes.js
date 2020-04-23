@@ -4,6 +4,7 @@ import Homepage from '../components/homepage/Homepage';
 import Menu from '../components/menu/Menu';
 import Checkout from '../components/booking/Checkout';
 import Cart from '../components/booking/Cart';
+import AllOrders from '../components/orders/AllOrders';
 
 const APP_ROUTES = {
     notFound: {
@@ -25,6 +26,13 @@ const APP_ROUTES = {
         icon: null,
         component: Homepage
     },
+    orders: {
+        path: '/orders',
+        name: 'Orders',
+        protected: false,
+        icon: null,
+        component: AllOrders
+    },
     menu: {
         path: '/menu',
         name: 'Menu',
@@ -38,7 +46,7 @@ const APP_ROUTES = {
         protected: false,
         icon: null,
         component: Cart
-    } 
+    }
     
 };
 class AppRoutes {

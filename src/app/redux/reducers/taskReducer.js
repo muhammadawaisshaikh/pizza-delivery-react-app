@@ -1,11 +1,13 @@
 import {
     GET_PRODUCTS,
-    GET_TYPES
+    GET_TYPES,
+    GET_ORDERS
   } from "../actions/actions";
   
   const INITIAL_STATE = {
     Products: [],
     Types: [],
+    Orders: [],
     loading : false,
   };
   
@@ -24,6 +26,13 @@ import {
         return {
           ...state,
           Types: action.types,
+          loading: false
+        };
+      }
+      case GET_ORDERS: {
+        return {
+          ...state,
+          Orders: action.orders,
           loading: false
         };
       }

@@ -1,6 +1,7 @@
 import {
     GET_PRODUCTS,
-    GET_TYPES
+    GET_TYPES,
+    GET_ORDERS
   } from "./actions";
 
 import CoreHttpService from '../../core/config/CoreHttpHandler';
@@ -45,6 +46,30 @@ export const GetTypes = () => {
             dispatch({
                 type: GET_TYPES,
                 types: response
+            });
+    
+        }, (error) => {
+            console.log(error);
+        });
+    };
+};
+
+export const GetOrders = () => {
+    console.log("GetOrders");
+    
+    return dispatch => {
+        console.log("GetOrders dispatch");
+
+        let params = {
+            id: 1
+        }
+
+        CoreHttpService.request('orders', 'listing', params, (response) => {
+            console.log(response);
+
+            dispatch({
+                type: GET_ORDERS,
+                orders: response
             });
     
         }, (error) => {
