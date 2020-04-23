@@ -86,6 +86,9 @@ class Menu extends React.Component {
                                         this.state.products.map((item, i) => {
                                             return (
                                                 <div className="col-md-4 mt-5" key={i}>
+                                                    <div style={{padding: '0 0 20px 0'}}>
+                                                        <img src={item.image} width="500px" />
+                                                    </div>
                                                     <div className="price-item-main">
                                                         <h4 className="list-item-title">{item.name}</h4>
                                                         <div className="price-list-dotted-separator"></div>
