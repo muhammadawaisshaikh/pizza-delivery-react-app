@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+import Cart from '../../assets/img/cart.png';
 import './menu.css';
 
 import { connect } from "react-redux";
@@ -10,14 +12,43 @@ class Menu extends React.Component {
       super(props);
 
       this.state = {
-          products: this.props.Products.data.products,
-          types: this.props.Types.data.types,
+        products: this.props.Products.data.products,
+        types: this.props.Types.data.types,
+        selectedType: '',
+        cart: []
       }
     }
 
     componentDidMount() {
-        console.log("this.props.Products : ", this.props.Products);
-        console.log("this.props.Types : ", this.props.Types);
+        // console.log("this.props.Products : ", this.props.Products);
+        // console.log("this.props.Types : ", this.props.Types);
+    }
+
+    changeType(event) {
+        this.setState({selectedType: event.target.value});
+    }
+
+    addToCart(item) {
+        // console.log(item);
+        // console.log(this.state.selectedType);
+
+        let typeAmount = this.state.selectedType.split("-");
+
+        let addItem = {
+            id: item.id,
+            name: item.name,
+            description: item.description,
+            image: item.image,
+            type: typeAmount[0],
+            amount: typeAmount[1]
+        }
+
+        this.state.cart.push(addItem);
+        localStorage.setItem('cart', JSON.stringify(this.state.cart));
+
+        console.log(localStorage.getItem('cart'));
+        console.log(this.state.cart);
+        
     }
 
     render() {
@@ -30,6 +61,20 @@ class Menu extends React.Component {
                                 <div className="menu-list-title">
                                     <h2>Tasty</h2>
                                     <h3>Menu</h3>
+
+                                    <div className="row justify-content-center">
+                                        <div className="col-1">
+                                            <Link to="/cart">
+                                                <div className="cart-btn">
+                                                    <img src={Cart} />
+                                                    <span>{this.state.cart ? 
+                                                            this.state.cart.length 
+                                                        : 0}
+                                                    </span>
+                                                </div>
+                                            </Link>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div className="col-md-12">
@@ -45,7 +90,8 @@ class Menu extends React.Component {
                                                     <div className="price-item-desc mb-2">
                                                         <p>{item.description}</p>
                                                     </div>
-                                                    <select className="mb-3 btn-default">
+                                                    <select className="mb-3 btn-default" onChange={(e) => {this.changeType(e)}}>
+                                                        <option>Select Type</option>
                                                         {
                                                             this.state.types.map((type, i) => {
                                                                 if (item.id == type.product_id) {
@@ -56,7 +102,7 @@ class Menu extends React.Component {
                                                             })
                                                         }
                                                     </select>
-                                                    <p><a className="btn-default py-2 px-3">Add To Cart</a></p>
+                                                    <p><a className="btn-default py-2 px-3" onClick={() => {this.addToCart(item)}}>Add To Cart</a></p>
                                                 </div>
                                             )
                                         })

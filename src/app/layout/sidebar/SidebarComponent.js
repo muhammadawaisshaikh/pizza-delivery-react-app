@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import AppRoutes from '../AppRoutes';
 
 import Logo from '../../assets/img/logo.png';
-import Cart from '../../assets/img/cart.png';
 
 const _routes = AppRoutes.registeredRoutes();
 
@@ -32,7 +31,7 @@ export default function Sidebar() {
                         <div className="col-3">
                             <img style={{padding: '10px 0'}} src={Logo} />
                         </div>
-                        <div className="col-8">
+                        <div className="col-9">
                             <div className="collapse navbar-collapse">
                                 <ul className="navbar-nav mr-auto">
                                     {
@@ -51,14 +50,6 @@ export default function Sidebar() {
                                     }
                                 </ul>
                             </div>
-                        </div>
-                        <div className="col-1">
-                            <Link to="/cart">
-                                <div className="cart-btn">
-                                    <img src={Cart} />
-                                    <span>3</span>
-                                </div>
-                            </Link>
                         </div>
                     </div>
                 </div>
