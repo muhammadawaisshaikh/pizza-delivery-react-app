@@ -10,20 +10,12 @@ class Menu extends React.Component {
       super(props);
 
       this.state = {
-          products: []
+          products: this.props.Products.data.products
       }
     }
 
     componentDidMount() {
-        this.getMenu();
-    }
-
-    getMenu() {
         console.log("this.props.Products : ", this.props.Products);
-
-        if (this.props.Products) {
-            this.state.products = this.props.Products.data.products;
-        }
     }
 
     render() {
@@ -44,7 +36,7 @@ class Menu extends React.Component {
                                         this.state.products.map((item, i) => {
                                             if (i < 5) {
                                                 return (
-                                                    <li>
+                                                    <li key={i}>
                                                         <div className="price-item-main">
                                                             <h4 className="list-item-title">{item.name} <small>(250 g)</small></h4>
                                                             <div className="price-list-dotted-separator"></div>
@@ -67,7 +59,7 @@ class Menu extends React.Component {
                                     this.state.products.map((item, i) => {
                                         if (i>=5 && i <= 10) {
                                             return (
-                                                <li>
+                                                <li key={i}>
                                                     <div className="price-item-main">
                                                         <h4 className="list-item-title">{item.name} <small>(250 g)</small></h4>
                                                         <div className="price-list-dotted-separator"></div>
