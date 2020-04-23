@@ -33,6 +33,7 @@ class Menu extends React.Component {
         // console.log(this.state.selectedType);
 
         let typeAmount = this.state.selectedType.split("-");
+        let amount = typeAmount[1].split("$");
 
         let addItem = {
             id: item.id,
@@ -40,7 +41,9 @@ class Menu extends React.Component {
             description: item.description,
             image: item.image,
             type: typeAmount[0],
-            amount: typeAmount[1]
+            amount: amount[1],
+            tamount: amount[1],
+            qty: 1
         }
 
         this.state.cart.push(addItem);
