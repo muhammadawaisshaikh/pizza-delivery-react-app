@@ -36,36 +36,36 @@ class Cart extends React.Component {
     }
 
     inputHandler = (event) => {
-        console.log(event.target.value);
+        if (event.target.value != 0) {
+            console.log(event.target.value);
         
-        this.state.cart.forEach((element, i) => {
-            if (element.id == event.target.name) {
+            this.state.cart.forEach((element, i) => {
+                if (element.id == event.target.name) {
 
-                let addItem = {
-                    id: element.id,
-                    name: element.name,
-                    description: element.description,
-                    image: element.image,
-                    type: element.type,
-                    amount: element.amount,
-                    tamount: element.amount*event.target.value,
-                    qty: event.target.value
+                    let addItem = {
+                        id: element.id,
+                        name: element.name,
+                        description: element.description,
+                        image: element.image,
+                        type: element.type,
+                        amount: element.amount,
+                        tamount: element.amount*event.target.value,
+                        qty: event.target.value
+                    }
+
+                    this.state.cart.splice(i, 1);
+                    console.log(this.state.cart);
+
+                    this.state.cart.push(addItem);
+
+                    console.log(this.state.cart);
+
+                    localStorage.setItem('cart', JSON.stringify(this.state.cart));
+                    
                 }
-
-                this.state.cart.splice(i, 1);
-                console.log(this.state.cart);
-
-                this.state.cart.push(addItem);
-
-                console.log(this.state.cart);
-
-                localStorage.setItem('cart', JSON.stringify(this.state.cart));
-                
-            }
-
-            this.calTotal();
-
-        });
+                this.calTotal();
+            });
+        }
     }
 
     removeItem = (id) => {
@@ -123,7 +123,7 @@ class Cart extends React.Component {
                                                                 </td>
                                                                 <td className="product-quantity">
                                                                     <div className="quantity">
-                                                                        <input type="number" name={`${item.id}`} className="input-text qty text" onChange={(e) => {this.inputHandler(e)}} />
+                                                                        <input type="number" name={item.id} value={item.qty} className="input-text qty text" onChange={(e) => {this.inputHandler(e)}} />
                                                                     </div>
                                                                 </td>
                                                                 <td className="product-subtotal">
