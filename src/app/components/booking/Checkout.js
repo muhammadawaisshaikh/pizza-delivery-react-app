@@ -6,8 +6,47 @@ import CoreHttpService from '../../core/config/CoreHttpHandler';
 class Menu extends React.Component {
 
     constructor(props) {
-      super(props);
+        super(props);
+  
+        this.state = {
+          cart: JSON.parse(localStorage.getItem('cart')),
+          total: 0,
+          name: '',
+          email: '',
+          mobile: '',
+          address: '',
+          ordered_products: localStorage.getItem('cart')
+        }
+      }
+
+    componentDidMount() {
+        this.getData();
     }
+
+    getData() {
+        this.total = 0;
+
+        this.state.cart.forEach((element, i) => {
+            this.total = this.total+element.tamount;
+        });
+
+        this.setState({total: this.total});
+        console.log(this.total);
+        
+    }
+
+    inputHandler = (event) => {
+        if (event.target.name == 'name') this.setState({name: event.target.value})
+        if (event.target.name == 'email') this.setState({email: event.target.value})
+        if (event.target.name == 'mobile') this.setState({mobile: event.target.value})
+        if (event.target.name == 'address') this.setState({address: event.target.value})
+    }
+
+    orderNow() {
+        console.log(this.state);
+        
+    }
+
 
     render() {
         
@@ -24,33 +63,33 @@ class Menu extends React.Component {
                                             <div class="col-sm-4 col-md-4">
                                                 <div class="form-group">
                                                     <label>name</label>
-                                                    <input type="text" class="form-control"/>
+                                                    <input type="text" name="name" class="form-control" onChange={(e) => {this.inputHandler(e)}} />
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-4 col-md-4">
                                                 <div class="form-group">
                                                     <label>email</label>
-                                                    <input type="email" class="form-control"/>
+                                                    <input type="email" name="email" class="form-control" onChange={(e) => {this.inputHandler(e)}} />
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-4 col-md-4">
                                                 <div class="form-group">
                                                     <label>mobile</label>
-                                                    <input type="text" class="form-control"/>
+                                                    <input type="text" name="mobile" class="form-control" onChange={(e) => {this.inputHandler(e)}} />
                                                 </div>
                                             </div>
 
                                             <div class="col-sm-12 col-md-12">
                                                 <div class="form-group">
                                                     <label>Address</label>
-                                                    <input type="text" class="form-control"/>
+                                                    <input type="text" name="address" class="form-control" onChange={(e) => {this.inputHandler(e)}} />
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="send-message text-center">
-                                            <a type="submit" class="btn-default">Order Now</a>
+                                            <a onClick={()=>{this.orderNow()}} class="btn-default">Order Now</a>
                                         </div>
                                     </form>
                                 </div>

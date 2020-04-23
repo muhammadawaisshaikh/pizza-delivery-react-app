@@ -22,14 +22,14 @@ class Cart extends React.Component {
     }
 
     calTotal = () => {
-        var total = 0;
+        this.total = 0;
 
         this.state.cart.forEach((element, i) => {
-            total = total+element.tamount;
+            this.total = this.total+element.tamount;
         });
 
         this.setState({
-            total: total
+            total: this.total
         })
 
         console.log(this.state.total);
