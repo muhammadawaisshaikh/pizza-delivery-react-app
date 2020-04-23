@@ -8,7 +8,8 @@ import {
 import { connect } from "react-redux";
 
 import {
-  GetProducts
+  GetProducts,
+  GetTypes
 } from "./app/redux/actions/taskAction";
 
 import AppRoutes from './app/layout/AppRoutes';
@@ -28,6 +29,7 @@ import Main from './app/components/main/MainComponent'
 
   componentDidMount() {
     this.props.GetProducts();
+    this.props.GetTypes();
   }
   
   render() {
@@ -63,7 +65,8 @@ const mapStateToProps = state => ({
 
 const mapDispacthToProps = dispatch => {
   return {
-    GetProducts: () => dispatch(GetProducts())    
+    GetProducts: () => dispatch(GetProducts()),   
+    GetTypes: () => dispatch(GetTypes()),   
   };
   
 };

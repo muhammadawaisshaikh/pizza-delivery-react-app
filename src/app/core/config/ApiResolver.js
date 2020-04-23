@@ -1,6 +1,7 @@
 
 import Users from '../http/users';
 import Products from '../http/products';
+import Types from '../http/types';
 
 class ApiResolver {
 
@@ -8,6 +9,7 @@ class ApiResolver {
         this.apis = {
             users: Users.apis(),
             products: Products.apis(),
+            types: Types.apis(),
         }
     }
 
