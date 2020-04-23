@@ -46,6 +46,12 @@ const APP_ROUTES = {
         protected: false,
         icon: null,
         component: Cart
+    },
+    checkout: {
+        path: '/checkout',
+        protected: false,
+        icon: null,
+        component: Checkout
     }
     
 };

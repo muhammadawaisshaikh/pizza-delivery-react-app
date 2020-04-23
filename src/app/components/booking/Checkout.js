@@ -3,7 +3,7 @@ import './booking.css';
 
 import CoreHttpService from '../../core/config/CoreHttpHandler';
 
-class Menu extends React.Component {
+class Checkout extends React.Component {
 
     constructor(props) {
         super(props);
@@ -30,7 +30,7 @@ class Menu extends React.Component {
         this.total = 0;
 
         this.state.cart.forEach((element, i) => {
-            this.total = this.total+element.tamount;
+            this.total = this.total + parseInt(element.tamount) ;
         });
 
         this.setState({total: this.total});
@@ -53,7 +53,7 @@ class Menu extends React.Component {
             
             if (response.statusText == "Created") {
                 this.setState({ success: true });
-                localStorage.clear();
+                localStorage.removeItem('cart');
             }
         }, (error) => {
             console.log(error);
@@ -112,14 +112,14 @@ class Menu extends React.Component {
                             </div>
                         </div>
                     </div>
-                :
-                <header className="cart-header" style={{padding: '100px'}}>
-                    <h2>Order Successfull</h2>
-                </header>
+                    :
+                    <header className="cart-header" style={{padding: '100px'}}>
+                        <h2>Order Successfull</h2>
+                    </header>
                 }
             </div>
         );
     }
 }
 
-export default Menu;
+export default Checkout;
