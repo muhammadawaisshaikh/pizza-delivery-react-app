@@ -4,8 +4,7 @@ import ApiResolver from './ApiResolver';
 class CoreHttpHandler {
     constructor() {
 
-        let backend_url = 'https://pizza-delivery-rails-api.herokuapp.com'
-        this.apiEndpoint = `https://cors-anywhere.herokuapp.com/${backend_url}`;
+        this.apiEndpoint = 'https://pizza-delivery-rails-api.herokuapp.com';
     
         this.config = {
             headers: {
