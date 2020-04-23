@@ -37,16 +37,26 @@ class Menu extends React.Component {
                                     {
                                         this.state.products.map((item, i) => {
                                             return (
-                                                <div className="col-md-4 mt-5">
+                                                <div className="col-md-4 mt-5" key={i}>
                                                     <div className="price-item-main">
-                                                        <h4 className="list-item-title">{item.name} <small>(250 g)</small></h4>
+                                                        <h4 className="list-item-title">{item.name}</h4>
                                                         <div className="price-list-dotted-separator"></div>
-                                                        <div className="list-item-price">$4.50</div>
                                                     </div>
-                                                    <div className="price-item-desc mb-3">
+                                                    <div className="price-item-desc mb-2">
                                                         <p>{item.description}</p>
                                                     </div>
-                                                    <a className="btn-default py-2 px-3">Add To Cart</a>
+                                                    <select className="mb-3 btn-default">
+                                                        {
+                                                            this.state.types.map((type, i) => {
+                                                                if (item.id == type.product_id) {
+                                                                    return (
+                                                                        <option key={i}>{type.name} - ${type.amount}</option>
+                                                                    )
+                                                                }
+                                                            })
+                                                        }
+                                                    </select>
+                                                    <p><a className="btn-default py-2 px-3">Add To Cart</a></p>
                                                 </div>
                                             )
                                         })
