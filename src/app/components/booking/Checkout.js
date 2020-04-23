@@ -15,12 +15,15 @@ class Menu extends React.Component {
           email: '',
           mobile: '',
           address: '',
-          ordered_products: localStorage.getItem('cart')
+          ordered_products: localStorage.getItem('cart'),
+          success: false
         }
       }
 
     componentDidMount() {
-        this.getData();
+        if (this.state.cart && this.state.cart.length >0) {
+            this.getData();
+        }
     }
 
     getData() {
@@ -44,7 +47,17 @@ class Menu extends React.Component {
 
     orderNow() {
         console.log(this.state);
-        
+
+        CoreHttpService.request('orders', 'create_order', this.state, (response) => {
+            console.log(response);
+            
+            if (response.statusText == "Created") {
+                this.setState({ success: true });
+                localStorage.clear();
+            }
+        }, (error) => {
+            console.log(error);
+        });
     }
 
 
@@ -52,51 +65,58 @@ class Menu extends React.Component {
         
         return (
             <div>
-                <div class="content inner-pg reservation-section">
-                    <div class="container">
-                        <div class="reservation-form">
-                            <div class="row">
-                                <div class="col-sm-10 col-md-8 col-centered">
-                                    <form>
-                                        <h5>contact details</h5>
-                                        <div class="row contact-detail">
-                                            <div class="col-sm-4 col-md-4">
-                                                <div class="form-group">
-                                                    <label>name</label>
-                                                    <input type="text" name="name" class="form-control" onChange={(e) => {this.inputHandler(e)}} />
+                {
+                    !this.state.success ?
+                    <div class="content inner-pg reservation-section">
+                        <div class="container">
+                            <div class="reservation-form">
+                                <div class="row">
+                                    <div class="col-sm-10 col-md-8 col-centered">
+                                        <form>
+                                            <h5>contact details</h5>
+                                            <div class="row contact-detail">
+                                                <div class="col-sm-4 col-md-4">
+                                                    <div class="form-group">
+                                                        <label>name</label>
+                                                        <input type="text" name="name" class="form-control" onChange={(e) => {this.inputHandler(e)}} />
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="col-sm-4 col-md-4">
-                                                <div class="form-group">
-                                                    <label>email</label>
-                                                    <input type="email" name="email" class="form-control" onChange={(e) => {this.inputHandler(e)}} />
+                                                <div class="col-sm-4 col-md-4">
+                                                    <div class="form-group">
+                                                        <label>email</label>
+                                                        <input type="email" name="email" class="form-control" onChange={(e) => {this.inputHandler(e)}} />
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="col-sm-4 col-md-4">
-                                                <div class="form-group">
-                                                    <label>mobile</label>
-                                                    <input type="text" name="mobile" class="form-control" onChange={(e) => {this.inputHandler(e)}} />
+                                                <div class="col-sm-4 col-md-4">
+                                                    <div class="form-group">
+                                                        <label>mobile</label>
+                                                        <input type="text" name="mobile" class="form-control" onChange={(e) => {this.inputHandler(e)}} />
+                                                    </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="col-sm-12 col-md-12">
-                                                <div class="form-group">
-                                                    <label>Address</label>
-                                                    <input type="text" name="address" class="form-control" onChange={(e) => {this.inputHandler(e)}} />
+                                                <div class="col-sm-12 col-md-12">
+                                                    <div class="form-group">
+                                                        <label>Address</label>
+                                                        <input type="text" name="address" class="form-control" onChange={(e) => {this.inputHandler(e)}} />
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="send-message text-center">
-                                            <a onClick={()=>{this.orderNow()}} class="btn-default">Order Now</a>
-                                        </div>
-                                    </form>
+                                            <div class="send-message text-center">
+                                                <a onClick={()=>{this.orderNow()}} class="btn-default">Order Now</a>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                :
+                <header className="cart-header" style={{padding: '100px'}}>
+                    <h2>Order Successfull</h2>
+                </header>
+                }
             </div>
         );
     }

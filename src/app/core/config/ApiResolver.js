@@ -2,6 +2,7 @@
 import Users from '../http/users';
 import Products from '../http/products';
 import Types from '../http/types';
+import Orders from '../http/order';
 
 class ApiResolver {
 
@@ -10,6 +11,7 @@ class ApiResolver {
             users: Users.apis(),
             products: Products.apis(),
             types: Types.apis(),
+            orders: Orders.apis(),
         }
     }
 

@@ -32,13 +32,6 @@ const APP_ROUTES = {
         icon: null,
         component: Menu
     },
-    checkout: {
-        path: '/checkout',
-        name: 'Checkout',
-        protected: false,
-        icon: null,
-        component: Checkout
-    },
     cart: {
         path: '/cart',
         name: 'Cart',
